@@ -1,10 +1,12 @@
-const {app, BrowserWindow, ipcMain} = require('electron')
+const {app,dialog,Notification, BrowserWindow, ipcMain} = require('electron')
+const updater = require('./src/updater')
 const url = require("url");
 const path = require("path");
 
 let mainWindow
 
 function createWindow () {
+  setTimeout( updater, 1000)
   mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
@@ -51,3 +53,13 @@ function openModal(){
     modal.show()
   })
 }
+
+function showNotification (title, body) {
+	const notification = {
+	  title: title,
+	  body: body,
+	  timeoutType :"never"
+	}
+	new Notification(notification).show()
+  }
+

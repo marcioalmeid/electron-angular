@@ -1,6 +1,6 @@
 {
   "name": "angular-electron-install",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "main": "main.js",
   "scripts": {
     "ng": "ng",
@@ -13,7 +13,7 @@
     "electron-build": "ng build --prod",
     "dist:linux": "electron-builder --linux",
     "dist:windows": "electron-builder --windows",
-     "release": "sh publish.sh "
+    "release": "sh src/publish.sh "
   },
   "private": true,
   "dependencies": {
@@ -25,6 +25,8 @@
     "@angular/platform-browser": "~11.0.5",
     "@angular/platform-browser-dynamic": "~11.0.5",
     "@angular/router": "~11.0.5",
+    "electron-log": "^4.3.1",
+    "electron-updater": "^4.3.5",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"
@@ -50,24 +52,23 @@
     "typescript": "~4.0.2"
   },
   "build": {
-
     "appId": "br.com.mam.updaterTest",
     "copyright": "Mam softwares 2020",
- 
-    "files": ["**/*", "dist/**/*"],
-
+    "files": [
+      "**/*",
+      "dist/**/*"
+    ],
     "directories": {
-        "output": "release",
-        "buildResources": "dist/"
-      },
-      "asar":true,
-     
+      "output": "release",
+      "buildResources": "dist/"
+    },
+    "asar": true,
     "publish": {
       "provider": "generic",
       "url": "http://mam:5080/"
     },
     "win": {
-      "target": "nsis" ,
+      "target": "nsis",
       "icon": "build/icon.ico"
     },
     "linux": {
@@ -76,7 +77,6 @@
     },
     "mac": {
       "target": "dmg"
-    } 
-  
+    }
   }
 }
